@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF</title>
+</head>
+<body>
+    <h1>CSRF</h1>
+    <p>Код скрипта:</p>
+    <pre>
+        &lt;script&gt;
+            fetch('https://home.com:8080', { method: 'POST' });
+        &lt;/script&gt;
+    </pre>
+    <p><a href="/csrf/vuln">Отправить вредоносный запрос на home.com/csrf/vuln</a></p>
+    <p><a href="/csrf/token">Отправить вредоносный запрос на home.com/csrf/token</a></p>
+</body>
+</html>

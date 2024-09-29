@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF токен</title>
+</head>
+<body>
+    <h1>CSRF токен</h1>
+    <form action="/csrf/token" method="post">
+        <input type="hidden" name="token" value="{{ csrf_token }}">
+        <input type="hidden" name="action" value="critical">
+        <button type="submit">Критическое действие</button>
+    </form>
+</body>
+</html>

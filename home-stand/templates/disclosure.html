@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раскрытие информации</title>
+</head>
+<body>
+    <h1>Раскрытие информации</h1>
+    <p>Чувствительная информация: <span id="sensitive-info"></span></p>
+    <script>
+        const sensitiveInfo = "Секретный ключ: 1234567890";
+        document.getElementById("sensitive-info").innerText = sensitiveInfo;
+    </script>
+</body>
+</html>

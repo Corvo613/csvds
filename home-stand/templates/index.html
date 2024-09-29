@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование механизмов безопасности</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <h1>Тестирование механизмов безопасности</h1>
+    <form action="/auth" method="POST">
+    <div id="security-settings">
+        <label>
+            <input type="checkbox" id="secure-flag" name="secure">
+            Secure
+        </label>
+        <label>
+            <input type="checkbox" id="httponly-flag" name="httponly">
+            HttpOnly
+        </label>
+        <label>
+            SameSite:
+            <select id="samesite-flag" name="samesite">
+                <option value="Lax" selected>Lax</option>
+                <option value="Strict">Strict</option>
+                <option value="None">None</option>
+                <option value="Off">Off</option>
+            </select>
+        </label>
+        <button type="submit">Авторизоваться</button>
+    </div>
+    </form>
+    <button id="cookie-btn">Вывести куку</button>
+    <div id="cookie-info"></div>
+    <div id="auth-status">
+        <span id="auth-status-text"> Статус авторизации:</span>
+        <span id="auth-status-indicator" style="background-color: {{ authorized_color }};"></span>
+    </div>
+    <div id="sensitive-info">
+        <p>Секретный ключ: <span id="secret-key">{{ secret_key }}</span></p>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
