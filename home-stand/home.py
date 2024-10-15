@@ -45,7 +45,7 @@ def auth():
         app.config["SESSION_COOKIE_SAMESITE"] = None
 
     session['csrf_token'] = str(uuid.uuid4())
-    session['balance'] = 1337
+    session['critical_action'] = False
     session['secret_key'] = "0JIg0JDQu9GM0YTQsC3QkdCw0L3QutC1INGA0LDQsdC+0YLQsNGO0YIg0YLQvtC70YzQutC+INC60L7RgtC40LrQuCA6Mw=="
 
     return redirect("/")
@@ -71,15 +71,14 @@ def xss_csp():
 def csrf_vuln_get():
     return render_template("csrf_vuln.html")
 
+@app.route("/csrf/vuln", methods=["POST"])
+def csrf_vuln_post():
+    session['critical_action'] = True
+    return redirect("/csrf/vuln")
+
 @app.route("/csrf/token", methods=["GET"])
 def csrf_vuln_token():
     return render_template("csrf_token.html", csrf_token = session.get("csrf_token"))
-
-@app.route("/csrf/vuln", methods=["POST"])
-def csrf_vuln():
-    if request.form["action"] == "critical":
-        session["critical_action"] = True
-    return jsonify({"success": True})
 
 @app.route("/csrf/token", methods=["POST"])
 def csrf_token():
