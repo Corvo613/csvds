@@ -2,6 +2,8 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+home_url = "http://home.com:8080"
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -14,15 +16,13 @@ def csrf():
 def cors():
     return render_template('cors.html')
 
-@app.route('/csrf/vuln', methods=['POST'])
-def csrf_vuln():
-    # Уязвимость CSRF
-    return 'Вредоносный запрос принят!'
+@app.route('/csrf/vuln', methods=['GET'])
+def csrf_vuln_get():
+    return render_template('csrf_vuln.html')
 
-@app.route('/csrf/token', methods=['POST'])
-def csrf_token():
-    # Уязвимость CSRF с токеном
-    return 'Вредоносный запрос принят с токеном!'
+@app.route('/csrf/token', methods=['GET'])
+def csrf_vuln_get_token():
+    return render_template('csrf_token.html')
 
 @app.route('/secret-key')
 def secret_key():
