@@ -6,11 +6,17 @@
     <title>CSRF токен</title>
 </head>
 <body>
-    <h1>CSRF токен</h1>
-    <form action="/csrf/token" method="post">
-        <input type="hidden" name="token" value="{{ csrf_token }}">
-        <input type="hidden" name="action" value="critical">
-        <button type="submit">Критическое действие</button>
-    </form>
+    {% if not session.get("critical_action") %}
+        <h1>Важное электронное письмо</h1>
+        <p>От: admin@example.com</p>
+        <p>Тема: Важная информация</p>
+        <p>Содержание: Это очень важное письмо, которое необходимо сохранить.</p>
+        <form action="/csrf/token" method="post">
+            <input type="hidden" name="token" value="{{ csrf_token }}">
+            <button type="submit">Критическое действие</button>
+        </form>
+    {% else %}
+        <h1>Письмо удалено или не существует</h1>
+    {% endif %}
 </body>
 </html>

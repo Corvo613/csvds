@@ -84,10 +84,9 @@ def csrf_vuln_token():
 def csrf_token():
     token = request.form["token"]
     if token == session.get("csrf_token"):
-        if request.form["action"] == "critical":
-            session["critical_action"] = True
-        return jsonify({"success": True})
-    return jsonify({"success": False})
+        session["critical_action"] = True
+        return redirect("/csrf/token")
+    return "Invalid CSRF-token"
 
 @app.route("/disclosure")
 def disclosure():
