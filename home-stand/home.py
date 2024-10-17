@@ -64,7 +64,7 @@ def xss_encoding():
 def xss_csp():
     query = request.args.get("query")
     response = make_response(render_template("xss_csp.html", query=query))
-    response.headers["Content-Security-Policy"] = "script-src 'none'; object-src 'none'"
+    response.headers["Content-Security-Policy"] = "script-src 'self' 'unsafe-hashes' 'sha256-6pNz81TgLoLQwZA+BPaYgswx2ZE70mhFfsICRZQJNKM='"
     return response
 
 @app.route("/csrf/vuln", methods=["GET"])
