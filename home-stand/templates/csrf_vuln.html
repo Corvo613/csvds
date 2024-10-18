@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSRF уязвимость</title>
-</head>
-<body>
-    {% if not session.get("critical_action") %}
-        <h1>Важное электронное письмо</h1>
-        <p>От: admin@example.com</p>
-        <p>Тема: Важная информация</p>
-        <p>Содержание: Это очень важное письмо, которое необходимо сохранить.</p>
-        <form action="/csrf/vuln" method="post">
-            <button type="submit">Удалить письмо</button>
-        </form>
-    {% else %}
-        <h1>Письмо удалено или не существует</h1>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title%}CSRF уязвимость{% endblock title %}
+    
+{% block content %}
+{% if not session.get("critical_action") %}
+<h1>Важное электронное письмо</h1>
+<p>От: admin@example.com</p>
+<p>Тема: Важная информация</p>
+<p>Содержание: Это очень важное письмо, которое необходимо сохранить.</p>
+<form action="/csrf/vuln" method="post">
+    <button type="submit">Удалить письмо</button>
+</form>
+{% else %}
+<h1>Письмо удалено или не существует</h1>
+{% endif %} 
+{% endblock content %}
