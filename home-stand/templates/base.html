@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">CSVDS</div>
+        <a href="/">Home</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">XSS 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/xss/vuln">XSS</a>
+                <a href="/xss/encoding">XSS with encoding</a>
+                <a href="/xss/csp">XSS with CSP</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">CSRF 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/csrf/vuln">CSRF</a>
+                <a href="/csrf/token">CSRF with token</a>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+        <h1>Welcome to base!</h1>
+    {% endblock content %}
+</body>
+</html>
