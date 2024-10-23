@@ -2,7 +2,7 @@ from flask import Flask, render_template
 
 application = Flask(__name__)
 
-home_url = "https://csvds-home.ru"
+home_url = "http://home.com:8080"
 
 @application.route("/")
 def index():
