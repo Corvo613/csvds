@@ -15,7 +15,7 @@ def index():
     except:
          authorized_color = "red"
         
-    secret_key = session.get('secret_key', default="Пока ничего :(")
+    secret_key = session.get('secret_key', default="There_is_no_secret_yet")
     
     return render_template("index.html", authorized_color=authorized_color, secret_key=secret_key)
 
@@ -64,7 +64,7 @@ def xss_encoding():
 def xss_csp():
     query = request.args.get("query")
     response = make_response(render_template("xss_csp.html", query=query))
-    response.headers["Content-Security-Policy"] = "script-src 'self' 'unsafe-hashes' 'sha256-/V0eTC15ql0NHNrLIk5jJ/k8ADy7TG0dMFXrBR6wT+M='"
+    response.headers["Content-Security-Policy"] = "script-src 'self' 'sha256-/V0eTC15ql0NHNrLIk5jJ/k8ADy7TG0dMFXrBR6wT+M='"
     return response
 
 @application.route("/csrf/vuln", methods=["GET"])

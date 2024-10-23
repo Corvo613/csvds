@@ -24,10 +24,5 @@ def csrf_vuln_get():
 def csrf_vuln_get_token():
     return render_template('csrf_token.html', home_url=home_url)
 
-@application.route('/secret-key')
-def secret_key():
-    # Секретный ключ
-    return 'Секретный ключ: 12345678900'
-
 if __name__ == '__main__':
     application.run(host='0.0.0.0')

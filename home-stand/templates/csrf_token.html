@@ -10,7 +10,7 @@
         <p>Содержание: Это очень важное письмо, которое необходимо сохранить.</p>
         <form action="/csrf/token" method="post">
             <input type="hidden" name="token" value="{{ csrf_token }}">
-            <button type="submit">Критическое действие</button>
+            <button type="submit">Удалить письмо</button>
         </form>
     {% else %}
         <h1>Письмо удалено или не существует</h1>
