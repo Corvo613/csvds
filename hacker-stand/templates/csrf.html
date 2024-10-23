@@ -31,6 +31,19 @@
         &lt;/script&gt;
     </code>
     </pre>
+    <p>Код скрипта на странице /csrf/token:</p>
+    <pre>
+    <code>
+        &lt;form id="csrf-form" method="post" action="{{ home_url }}/csrf/token"&gt;
+        &lt;input type="hidden" name="token" value="i-dont-know-csrf-token"&gt;
+        &lt;/form&gt;
+        &lt;script&gt;
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("csrf-form").submit();
+            });
+        &lt;/script&gt;
+    </code>
+    </pre>
     <p><a href="/csrf/token" target="_blank">Отправить вредоносный запрос на {{ home_url }}/csrf/token</a></p>
 </body>
 </html>
