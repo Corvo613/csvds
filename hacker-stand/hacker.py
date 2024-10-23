@@ -1,33 +1,33 @@
 from flask import Flask, render_template
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-home_url = "http://home.com:8080"
+home_url = "https://csvds-home.ru"
 
-@app.route("/")
+@application.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html', home_url=home_url)
 
-@app.route("/csrf")
+@application.route("/csrf")
 def csrf():
-    return render_template('csrf.html')
+    return render_template('csrf.html', home_url=home_url)
 
-@app.route("/cors")
+@application.route("/cors")
 def cors():
-    return render_template('cors.html')
+    return render_template('cors.html', home_url=home_url)
 
-@app.route('/csrf/vuln', methods=['GET'])
+@application.route('/csrf/vuln', methods=['GET'])
 def csrf_vuln_get():
-    return render_template('csrf_vuln.html')
+    return render_template('csrf_vuln.html', home_url=home_url)
 
-@app.route('/csrf/token', methods=['GET'])
+@application.route('/csrf/token', methods=['GET'])
 def csrf_vuln_get_token():
-    return render_template('csrf_token.html')
+    return render_template('csrf_token.html', home_url=home_url)
 
-@app.route('/secret-key')
+@application.route('/secret-key')
 def secret_key():
     # Секретный ключ
     return 'Секретный ключ: 12345678900'
 
 if __name__ == '__main__':
-    app.run(host='hacker.com', port=8081)
+    application.run(host='0.0.0.0')

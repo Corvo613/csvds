@@ -4,8 +4,8 @@
 VENV_DIR=".venv"
 DOMAIN_APP1="home.com"  # Локальный домен для первого приложения
 DOMAIN_APP2="hacker.com"  # Локальный домен для второго приложения
-APP1_MODULE="home-stand.home:app"    # Укажите модуль первого приложения Flask
-APP2_MODULE="hacker-stand.hacker:app" # Укажите модуль второго приложения Flask
+APP1_MODULE="home-stand.home:application"    # Укажите модуль первого приложения Flask
+APP2_MODULE="hacker-stand.hacker:application" # Укажите модуль второго приложения Flask
 PORT_APP1=8080            # Порт для первого приложения
 PORT_APP2=8081            # Порт для второго приложения
 

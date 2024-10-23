@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>CSRF атака</h1>
-    <form id="csrf-form" method="post" action="http://home.com:8080/csrf/vuln">
+    <form id="csrf-form" method="post" action="{{ home_url }}/csrf/vuln">
     </form>
     <script>
         // Отправляем форму при загрузке страницы

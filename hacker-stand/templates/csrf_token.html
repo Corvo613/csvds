@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>CSRF атака</h1>
-    <form id="csrf-form" method="post" action="http://home.com:8080/csrf/token">
+    <form id="csrf-form" method="post" action="{{ home_url }}/csrf/token">
         <input type="hidden" name="token" value="i-dont-know-csrf-token">
     </form>
     <script>

@@ -8,10 +8,10 @@
     <p>Код скрипта:</p>
     <pre>
         &lt;script&gt;
-            fetch('https://home.com:8080', { method: 'POST' });
+            fetch('{{ home_url }}', { method: 'POST' });
         &lt;/script&gt;
     </pre>
-    <p><a href="/csrf/vuln">Отправить вредоносный запрос на home.com/csrf/vuln</a></p>
-    <p><a href="/csrf/token">Отправить вредоносный запрос на home.com/csrf/token</a></p>
+    <p><a href="/csrf/vuln">Отправить вредоносный запрос на {{ home_url }}/csrf/vuln</a></p>
+    <p><a href="/csrf/token">Отправить вредоносный запрос на {{ home_url }}/csrf/token</a></p>
 </body>
 </html>
